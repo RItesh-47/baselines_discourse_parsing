@@ -1,0 +1,958 @@
+2024-12-05 23:57:26.642581: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use SSE4.1 instructions, but these are available on your machine and could speed up CPU computations.
+2024-12-05 23:57:26.642650: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use SSE4.2 instructions, but these are available on your machine and could speed up CPU computations.
+2024-12-05 23:57:26.642658: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use AVX instructions, but these are available on your machine and could speed up CPU computations.
+2024-12-05 23:57:26.642663: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use AVX2 instructions, but these are available on your machine and could speed up CPU computations.
+2024-12-05 23:57:26.642668: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use AVX512F instructions, but these are available on your machine and could speed up CPU computations.
+2024-12-05 23:57:26.642673: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use FMA instructions, but these are available on your machine and could speed up CPU computations.
+('Loading data:', '/DATA1/ritesh/baselines_discourse_parsing/DialogueDiscourseParsing/data/Molweni/train.json')
+9000 dialogs, 79487 edus, 70452 relations, 5 backward relations
+8 edus have multiple parents
+('Loading data:', '/DATA1/ritesh/baselines_discourse_parsing/DialogueDiscourseParsing/data/Molweni/test.json')
+500 dialogs, 4430 edus, 3911 relations, 0 backward relations
+0 edus have multiple parents
+Building vocabulary...
+Loading word vectors...
+Pre-trained vectors: 9096/9138
+Dataset sizes: 9000/500
+Reading model parameters from dev_model
+Trainable variables:
+<tf.Variable 'agent_bi/policy_network/dense/kernel:0' shape=(1028, 512) dtype=float32_ref>
+<tf.Variable 'agent_bi/policy_network/dense/bias:0' shape=(512,) dtype=float32_ref>
+<tf.Variable 'agent_bi/policy_network/dense_1/kernel:0' shape=(512, 1) dtype=float32_ref>
+<tf.Variable 'agent_bi/policy_network/dense_1/bias:0' shape=(1,) dtype=float32_ref>
+<tf.Variable 'agent_bi/Sentence_Encoder/word_embedding:0' shape=(9138, 100) dtype=float32_ref>
+<tf.Variable 'agent_bi/Sentence_Encoder/encoders/enc_text/bidirectional_rnn/fw/multi_rnn_cell/cell_0/gru_cell/gates/kernel:0' shape=(228, 256) dtype=float32_ref>
+<tf.Variable 'agent_bi/Sentence_Encoder/encoders/enc_text/bidirectional_rnn/fw/multi_rnn_cell/cell_0/gru_cell/gates/bias:0' shape=(256,) dtype=float32_ref>
+<tf.Variable 'agent_bi/Sentence_Encoder/encoders/enc_text/bidirectional_rnn/fw/multi_rnn_cell/cell_0/gru_cell/candidate/kernel:0' shape=(228, 128) dtype=float32_ref>
+<tf.Variable 'agent_bi/Sentence_Encoder/encoders/enc_text/bidirectional_rnn/fw/multi_rnn_cell/cell_0/gru_cell/candidate/bias:0' shape=(128,) dtype=float32_ref>
+<tf.Variable 'agent_bi/Sentence_Encoder/encoders/enc_text/bidirectional_rnn/bw/multi_rnn_cell/cell_0/gru_cell/gates/kernel:0' shape=(228, 256) dtype=float32_ref>
+<tf.Variable 'agent_bi/Sentence_Encoder/encoders/enc_text/bidirectional_rnn/bw/multi_rnn_cell/cell_0/gru_cell/gates/bias:0' shape=(256,) dtype=float32_ref>
+<tf.Variable 'agent_bi/Sentence_Encoder/encoders/enc_text/bidirectional_rnn/bw/multi_rnn_cell/cell_0/gru_cell/candidate/kernel:0' shape=(228, 128) dtype=float32_ref>
+<tf.Variable 'agent_bi/Sentence_Encoder/encoders/enc_text/bidirectional_rnn/bw/multi_rnn_cell/cell_0/gru_cell/candidate/bias:0' shape=(128,) dtype=float32_ref>
+<tf.Variable 'agent_bi/Sentence_Encoder/encoders/enc_text_cont/rnn/multi_rnn_cell/cell_0/gru_cell/gates/kernel:0' shape=(512, 512) dtype=float32_ref>
+<tf.Variable 'agent_bi/Sentence_Encoder/encoders/enc_text_cont/rnn/multi_rnn_cell/cell_0/gru_cell/gates/bias:0' shape=(512,) dtype=float32_ref>
+<tf.Variable 'agent_bi/Sentence_Encoder/encoders/enc_text_cont/rnn/multi_rnn_cell/cell_0/gru_cell/candidate/kernel:0' shape=(512, 256) dtype=float32_ref>
+<tf.Variable 'agent_bi/Sentence_Encoder/encoders/enc_text_cont/rnn/multi_rnn_cell/cell_0/gru_cell/candidate/bias:0' shape=(256,) dtype=float32_ref>
+<tf.Variable 'agent_bi/Structured_Encoder_general/relation_embedding:0' shape=(17, 100) dtype=float32_ref>
+<tf.Variable 'agent_bi/Structured_Encoder_general/encoder/gru_cell/gates/kernel:0' shape=(612, 512) dtype=float32_ref>
+<tf.Variable 'agent_bi/Structured_Encoder_general/encoder/gru_cell/gates/bias:0' shape=(512,) dtype=float32_ref>
+<tf.Variable 'agent_bi/Structured_Encoder_general/encoder/gru_cell/candidate/kernel:0' shape=(612, 256) dtype=float32_ref>
+<tf.Variable 'agent_bi/Structured_Encoder_general/encoder/gru_cell/candidate/bias:0' shape=(256,) dtype=float32_ref>
+<tf.Variable 'agent_bi/Structured_Encoder_attn/relation_embedding:0' shape=(17, 100) dtype=float32_ref>
+<tf.Variable 'agent_bi/Structured_Encoder_attn/encoder/gru_cell/gates/kernel:0' shape=(612, 512) dtype=float32_ref>
+<tf.Variable 'agent_bi/Structured_Encoder_attn/encoder/gru_cell/gates/bias:0' shape=(512,) dtype=float32_ref>
+<tf.Variable 'agent_bi/Structured_Encoder_attn/encoder/gru_cell/candidate/kernel:0' shape=(612, 256) dtype=float32_ref>
+<tf.Variable 'agent_bi/Structured_Encoder_attn/encoder/gru_cell/candidate/bias:0' shape=(256,) dtype=float32_ref>
+<tf.Variable 'agent_multi/policy_network/dense/kernel:0' shape=(1028, 512) dtype=float32_ref>
+<tf.Variable 'agent_multi/policy_network/dense/bias:0' shape=(512,) dtype=float32_ref>
+<tf.Variable 'agent_multi/policy_network/dense_1/kernel:0' shape=(512, 16) dtype=float32_ref>
+<tf.Variable 'agent_multi/policy_network/dense_1/bias:0' shape=(16,) dtype=float32_ref>
+<tf.Variable 'agent_multi/Sentence_Encoder/word_embedding:0' shape=(9138, 100) dtype=float32_ref>
+<tf.Variable 'agent_multi/Sentence_Encoder/encoders/enc_text/bidirectional_rnn/fw/multi_rnn_cell/cell_0/gru_cell/gates/kernel:0' shape=(228, 256) dtype=float32_ref>
+<tf.Variable 'agent_multi/Sentence_Encoder/encoders/enc_text/bidirectional_rnn/fw/multi_rnn_cell/cell_0/gru_cell/gates/bias:0' shape=(256,) dtype=float32_ref>
+<tf.Variable 'agent_multi/Sentence_Encoder/encoders/enc_text/bidirectional_rnn/fw/multi_rnn_cell/cell_0/gru_cell/candidate/kernel:0' shape=(228, 128) dtype=float32_ref>
+<tf.Variable 'agent_multi/Sentence_Encoder/encoders/enc_text/bidirectional_rnn/fw/multi_rnn_cell/cell_0/gru_cell/candidate/bias:0' shape=(128,) dtype=float32_ref>
+<tf.Variable 'agent_multi/Sentence_Encoder/encoders/enc_text/bidirectional_rnn/bw/multi_rnn_cell/cell_0/gru_cell/gates/kernel:0' shape=(228, 256) dtype=float32_ref>
+<tf.Variable 'agent_multi/Sentence_Encoder/encoders/enc_text/bidirectional_rnn/bw/multi_rnn_cell/cell_0/gru_cell/gates/bias:0' shape=(256,) dtype=float32_ref>
+<tf.Variable 'agent_multi/Sentence_Encoder/encoders/enc_text/bidirectional_rnn/bw/multi_rnn_cell/cell_0/gru_cell/candidate/kernel:0' shape=(228, 128) dtype=float32_ref>
+<tf.Variable 'agent_multi/Sentence_Encoder/encoders/enc_text/bidirectional_rnn/bw/multi_rnn_cell/cell_0/gru_cell/candidate/bias:0' shape=(128,) dtype=float32_ref>
+<tf.Variable 'agent_multi/Sentence_Encoder/encoders/enc_text_cont/rnn/multi_rnn_cell/cell_0/gru_cell/gates/kernel:0' shape=(512, 512) dtype=float32_ref>
+<tf.Variable 'agent_multi/Sentence_Encoder/encoders/enc_text_cont/rnn/multi_rnn_cell/cell_0/gru_cell/gates/bias:0' shape=(512,) dtype=float32_ref>
+<tf.Variable 'agent_multi/Sentence_Encoder/encoders/enc_text_cont/rnn/multi_rnn_cell/cell_0/gru_cell/candidate/kernel:0' shape=(512, 256) dtype=float32_ref>
+<tf.Variable 'agent_multi/Sentence_Encoder/encoders/enc_text_cont/rnn/multi_rnn_cell/cell_0/gru_cell/candidate/bias:0' shape=(256,) dtype=float32_ref>
+<tf.Variable 'agent_multi/Structured_Encoder_general/relation_embedding:0' shape=(17, 100) dtype=float32_ref>
+<tf.Variable 'agent_multi/Structured_Encoder_general/encoder/gru_cell/gates/kernel:0' shape=(612, 512) dtype=float32_ref>
+<tf.Variable 'agent_multi/Structured_Encoder_general/encoder/gru_cell/gates/bias:0' shape=(512,) dtype=float32_ref>
+<tf.Variable 'agent_multi/Structured_Encoder_general/encoder/gru_cell/candidate/kernel:0' shape=(612, 256) dtype=float32_ref>
+<tf.Variable 'agent_multi/Structured_Encoder_general/encoder/gru_cell/candidate/bias:0' shape=(256,) dtype=float32_ref>
+<tf.Variable 'agent_multi/Structured_Encoder_attn/relation_embedding:0' shape=(17, 100) dtype=float32_ref>
+<tf.Variable 'agent_multi/Structured_Encoder_attn/encoder/gru_cell/gates/kernel:0' shape=(612, 512) dtype=float32_ref>
+<tf.Variable 'agent_multi/Structured_Encoder_attn/encoder/gru_cell/gates/bias:0' shape=(512,) dtype=float32_ref>
+<tf.Variable 'agent_multi/Structured_Encoder_attn/encoder/gru_cell/candidate/kernel:0' shape=(612, 256) dtype=float32_ref>
+<tf.Variable 'agent_multi/Structured_Encoder_attn/encoder/gru_cell/candidate/bias:0' shape=(256,) dtype=float32_ref>
+2024-12-06 00:01:32.343226: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use SSE4.1 instructions, but these are available on your machine and could speed up CPU computations.
+2024-12-06 00:01:32.343287: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use SSE4.2 instructions, but these are available on your machine and could speed up CPU computations.
+2024-12-06 00:01:32.343295: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use AVX instructions, but these are available on your machine and could speed up CPU computations.
+2024-12-06 00:01:32.343301: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use AVX2 instructions, but these are available on your machine and could speed up CPU computations.
+2024-12-06 00:01:32.343306: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use AVX512F instructions, but these are available on your machine and could speed up CPU computations.
+2024-12-06 00:01:32.343311: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use FMA instructions, but these are available on your machine and could speed up CPU computations.
+('Loading data:', '/DATA1/ritesh/baselines_discourse_parsing/DialogueDiscourseParsing/data/Molweni/train.json')
+9000 dialogs, 79487 edus, 70452 relations, 5 backward relations
+8 edus have multiple parents
+('Loading data:', '/DATA1/ritesh/baselines_discourse_parsing/DialogueDiscourseParsing/data/Molweni/test.json')
+500 dialogs, 4430 edus, 3911 relations, 0 backward relations
+0 edus have multiple parents
+Building vocabulary...
+Loading word vectors...
+Pre-trained vectors: 9096/9138
+Dataset sizes: 9000/500
+Reading model parameters from dev_model
+Trainable variables:
+<tf.Variable 'agent_bi/policy_network/dense/kernel:0' shape=(1028, 512) dtype=float32_ref>
+<tf.Variable 'agent_bi/policy_network/dense/bias:0' shape=(512,) dtype=float32_ref>
+<tf.Variable 'agent_bi/policy_network/dense_1/kernel:0' shape=(512, 1) dtype=float32_ref>
+<tf.Variable 'agent_bi/policy_network/dense_1/bias:0' shape=(1,) dtype=float32_ref>
+<tf.Variable 'agent_bi/Sentence_Encoder/word_embedding:0' shape=(9138, 100) dtype=float32_ref>
+<tf.Variable 'agent_bi/Sentence_Encoder/encoders/enc_text/bidirectional_rnn/fw/multi_rnn_cell/cell_0/gru_cell/gates/kernel:0' shape=(228, 256) dtype=float32_ref>
+<tf.Variable 'agent_bi/Sentence_Encoder/encoders/enc_text/bidirectional_rnn/fw/multi_rnn_cell/cell_0/gru_cell/gates/bias:0' shape=(256,) dtype=float32_ref>
+<tf.Variable 'agent_bi/Sentence_Encoder/encoders/enc_text/bidirectional_rnn/fw/multi_rnn_cell/cell_0/gru_cell/candidate/kernel:0' shape=(228, 128) dtype=float32_ref>
+<tf.Variable 'agent_bi/Sentence_Encoder/encoders/enc_text/bidirectional_rnn/fw/multi_rnn_cell/cell_0/gru_cell/candidate/bias:0' shape=(128,) dtype=float32_ref>
+<tf.Variable 'agent_bi/Sentence_Encoder/encoders/enc_text/bidirectional_rnn/bw/multi_rnn_cell/cell_0/gru_cell/gates/kernel:0' shape=(228, 256) dtype=float32_ref>
+<tf.Variable 'agent_bi/Sentence_Encoder/encoders/enc_text/bidirectional_rnn/bw/multi_rnn_cell/cell_0/gru_cell/gates/bias:0' shape=(256,) dtype=float32_ref>
+<tf.Variable 'agent_bi/Sentence_Encoder/encoders/enc_text/bidirectional_rnn/bw/multi_rnn_cell/cell_0/gru_cell/candidate/kernel:0' shape=(228, 128) dtype=float32_ref>
+<tf.Variable 'agent_bi/Sentence_Encoder/encoders/enc_text/bidirectional_rnn/bw/multi_rnn_cell/cell_0/gru_cell/candidate/bias:0' shape=(128,) dtype=float32_ref>
+<tf.Variable 'agent_bi/Sentence_Encoder/encoders/enc_text_cont/rnn/multi_rnn_cell/cell_0/gru_cell/gates/kernel:0' shape=(512, 512) dtype=float32_ref>
+<tf.Variable 'agent_bi/Sentence_Encoder/encoders/enc_text_cont/rnn/multi_rnn_cell/cell_0/gru_cell/gates/bias:0' shape=(512,) dtype=float32_ref>
+<tf.Variable 'agent_bi/Sentence_Encoder/encoders/enc_text_cont/rnn/multi_rnn_cell/cell_0/gru_cell/candidate/kernel:0' shape=(512, 256) dtype=float32_ref>
+<tf.Variable 'agent_bi/Sentence_Encoder/encoders/enc_text_cont/rnn/multi_rnn_cell/cell_0/gru_cell/candidate/bias:0' shape=(256,) dtype=float32_ref>
+<tf.Variable 'agent_bi/Structured_Encoder_general/relation_embedding:0' shape=(17, 100) dtype=float32_ref>
+<tf.Variable 'agent_bi/Structured_Encoder_general/encoder/gru_cell/gates/kernel:0' shape=(612, 512) dtype=float32_ref>
+<tf.Variable 'agent_bi/Structured_Encoder_general/encoder/gru_cell/gates/bias:0' shape=(512,) dtype=float32_ref>
+<tf.Variable 'agent_bi/Structured_Encoder_general/encoder/gru_cell/candidate/kernel:0' shape=(612, 256) dtype=float32_ref>
+<tf.Variable 'agent_bi/Structured_Encoder_general/encoder/gru_cell/candidate/bias:0' shape=(256,) dtype=float32_ref>
+<tf.Variable 'agent_bi/Structured_Encoder_attn/relation_embedding:0' shape=(17, 100) dtype=float32_ref>
+<tf.Variable 'agent_bi/Structured_Encoder_attn/encoder/gru_cell/gates/kernel:0' shape=(612, 512) dtype=float32_ref>
+<tf.Variable 'agent_bi/Structured_Encoder_attn/encoder/gru_cell/gates/bias:0' shape=(512,) dtype=float32_ref>
+<tf.Variable 'agent_bi/Structured_Encoder_attn/encoder/gru_cell/candidate/kernel:0' shape=(612, 256) dtype=float32_ref>
+<tf.Variable 'agent_bi/Structured_Encoder_attn/encoder/gru_cell/candidate/bias:0' shape=(256,) dtype=float32_ref>
+<tf.Variable 'agent_multi/policy_network/dense/kernel:0' shape=(1028, 512) dtype=float32_ref>
+<tf.Variable 'agent_multi/policy_network/dense/bias:0' shape=(512,) dtype=float32_ref>
+<tf.Variable 'agent_multi/policy_network/dense_1/kernel:0' shape=(512, 16) dtype=float32_ref>
+<tf.Variable 'agent_multi/policy_network/dense_1/bias:0' shape=(16,) dtype=float32_ref>
+<tf.Variable 'agent_multi/Sentence_Encoder/word_embedding:0' shape=(9138, 100) dtype=float32_ref>
+<tf.Variable 'agent_multi/Sentence_Encoder/encoders/enc_text/bidirectional_rnn/fw/multi_rnn_cell/cell_0/gru_cell/gates/kernel:0' shape=(228, 256) dtype=float32_ref>
+<tf.Variable 'agent_multi/Sentence_Encoder/encoders/enc_text/bidirectional_rnn/fw/multi_rnn_cell/cell_0/gru_cell/gates/bias:0' shape=(256,) dtype=float32_ref>
+<tf.Variable 'agent_multi/Sentence_Encoder/encoders/enc_text/bidirectional_rnn/fw/multi_rnn_cell/cell_0/gru_cell/candidate/kernel:0' shape=(228, 128) dtype=float32_ref>
+<tf.Variable 'agent_multi/Sentence_Encoder/encoders/enc_text/bidirectional_rnn/fw/multi_rnn_cell/cell_0/gru_cell/candidate/bias:0' shape=(128,) dtype=float32_ref>
+<tf.Variable 'agent_multi/Sentence_Encoder/encoders/enc_text/bidirectional_rnn/bw/multi_rnn_cell/cell_0/gru_cell/gates/kernel:0' shape=(228, 256) dtype=float32_ref>
+<tf.Variable 'agent_multi/Sentence_Encoder/encoders/enc_text/bidirectional_rnn/bw/multi_rnn_cell/cell_0/gru_cell/gates/bias:0' shape=(256,) dtype=float32_ref>
+<tf.Variable 'agent_multi/Sentence_Encoder/encoders/enc_text/bidirectional_rnn/bw/multi_rnn_cell/cell_0/gru_cell/candidate/kernel:0' shape=(228, 128) dtype=float32_ref>
+<tf.Variable 'agent_multi/Sentence_Encoder/encoders/enc_text/bidirectional_rnn/bw/multi_rnn_cell/cell_0/gru_cell/candidate/bias:0' shape=(128,) dtype=float32_ref>
+<tf.Variable 'agent_multi/Sentence_Encoder/encoders/enc_text_cont/rnn/multi_rnn_cell/cell_0/gru_cell/gates/kernel:0' shape=(512, 512) dtype=float32_ref>
+<tf.Variable 'agent_multi/Sentence_Encoder/encoders/enc_text_cont/rnn/multi_rnn_cell/cell_0/gru_cell/gates/bias:0' shape=(512,) dtype=float32_ref>
+<tf.Variable 'agent_multi/Sentence_Encoder/encoders/enc_text_cont/rnn/multi_rnn_cell/cell_0/gru_cell/candidate/kernel:0' shape=(512, 256) dtype=float32_ref>
+<tf.Variable 'agent_multi/Sentence_Encoder/encoders/enc_text_cont/rnn/multi_rnn_cell/cell_0/gru_cell/candidate/bias:0' shape=(256,) dtype=float32_ref>
+<tf.Variable 'agent_multi/Structured_Encoder_general/relation_embedding:0' shape=(17, 100) dtype=float32_ref>
+<tf.Variable 'agent_multi/Structured_Encoder_general/encoder/gru_cell/gates/kernel:0' shape=(612, 512) dtype=float32_ref>
+<tf.Variable 'agent_multi/Structured_Encoder_general/encoder/gru_cell/gates/bias:0' shape=(512,) dtype=float32_ref>
+<tf.Variable 'agent_multi/Structured_Encoder_general/encoder/gru_cell/candidate/kernel:0' shape=(612, 256) dtype=float32_ref>
+<tf.Variable 'agent_multi/Structured_Encoder_general/encoder/gru_cell/candidate/bias:0' shape=(256,) dtype=float32_ref>
+<tf.Variable 'agent_multi/Structured_Encoder_attn/relation_embedding:0' shape=(17, 100) dtype=float32_ref>
+<tf.Variable 'agent_multi/Structured_Encoder_attn/encoder/gru_cell/gates/kernel:0' shape=(612, 512) dtype=float32_ref>
+<tf.Variable 'agent_multi/Structured_Encoder_attn/encoder/gru_cell/gates/bias:0' shape=(512,) dtype=float32_ref>
+<tf.Variable 'agent_multi/Structured_Encoder_attn/encoder/gru_cell/candidate/kernel:0' shape=(612, 256) dtype=float32_ref>
+<tf.Variable 'agent_multi/Structured_Encoder_attn/encoder/gru_cell/candidate/bias:0' shape=(256,) dtype=float32_ref>
+epoch 29, global step 63500 (0.3872s/step):
+  train loss_bi: 0.34688
+  train loss_multi: 0.51547
+  train f1_bi: 0.88924
+  train f1_multi: 0.76466
+('  best test f1:', 0, 0)
+epoch 29, global step 64000 (0.3900s/step):
+  train loss_bi: 0.33551
+  train loss_multi: 0.52389
+  train f1_bi: 0.89265
+  train f1_multi: 0.76580
+('  best test f1:', 0, 0)
+epoch 29, global step 64500 (0.3905s/step):
+  train loss_bi: 0.33298
+  train loss_multi: 0.52696
+  train f1_bi: 0.89342
+  train f1_multi: 0.76630
+('  best test f1:', 0, 0)
+epoch 29, global step 65000 (0.3893s/step):
+  train loss_bi: 0.33726
+  train loss_multi: 0.52649
+  train f1_bi: 0.89189
+  train f1_multi: 0.76517
+('  best test f1:', 0, 0)
+epoch 29 (learning rate 0.05680)
+  train loss_bi: 0.33770
+  train loss_multi: 0.52608
+  train f1_bi: 0.89165
+  train f1_multi: 0.76533
+  test loss_bi: 0.00000
+  test loss_multi: 1.77668
+  test f1_bi: 0.75124
+  test f1_multi: 0.51196
+('  best test f1:', 0.7512415349887133, 0.5119638826185101)
+epoch 30, global step 65500 (0.3800s/step):
+  train loss_bi: 0.30713
+  train loss_multi: 0.49875
+  train f1_bi: 0.90305
+  train f1_multi: 0.78524
+('  best test f1:', 0.7512415349887133, 0.5119638826185101)
+epoch 30, global step 66000 (0.3841s/step):
+  train loss_bi: 0.32361
+  train loss_multi: 0.51065
+  train f1_bi: 0.89529
+  train f1_multi: 0.77371
+('  best test f1:', 0.7512415349887133, 0.5119638826185101)
+epoch 30, global step 66500 (0.3864s/step):
+  train loss_bi: 0.32882
+  train loss_multi: 0.50943
+  train f1_bi: 0.89447
+  train f1_multi: 0.77222
+('  best test f1:', 0.7512415349887133, 0.5119638826185101)
+epoch 30, global step 67000 (0.3854s/step):
+  train loss_bi: 0.32925
+  train loss_multi: 0.51232
+  train f1_bi: 0.89425
+  train f1_multi: 0.77127
+('  best test f1:', 0.7512415349887133, 0.5119638826185101)
+epoch 30, global step 67500 (0.3869s/step):
+  train loss_bi: 0.32965
+  train loss_multi: 0.51161
+  train f1_bi: 0.89487
+  train f1_multi: 0.77202
+('  best test f1:', 0.7512415349887133, 0.5119638826185101)
+epoch 30 (learning rate 0.05566)
+  train loss_bi: 0.32965
+  train loss_multi: 0.51161
+  train f1_bi: 0.89487
+  train f1_multi: 0.77202
+  test loss_bi: 0.00000
+  test loss_multi: 1.80510
+  test f1_bi: 0.74989
+  test f1_multi: 0.51400
+('  best test f1:', 0.7498871331828442, 0.5139954853273138)
+epoch 31, global step 68000 (0.3857s/step):
+  train loss_bi: 0.33536
+  train loss_multi: 0.49602
+  train f1_bi: 0.89415
+  train f1_multi: 0.77331
+('  best test f1:', 0.7498871331828442, 0.5139954853273138)
+epoch 31, global step 68500 (0.3862s/step):
+  train loss_bi: 0.32201
+  train loss_multi: 0.49990
+  train f1_bi: 0.89740
+  train f1_multi: 0.77583
+('  best test f1:', 0.7498871331828442, 0.5139954853273138)
+epoch 31, global step 69000 (0.3882s/step):
+  train loss_bi: 0.31897
+  train loss_multi: 0.49829
+  train f1_bi: 0.89831
+  train f1_multi: 0.77735
+('  best test f1:', 0.7498871331828442, 0.5139954853273138)
+epoch 31, global step 69500 (0.3886s/step):
+  train loss_bi: 0.31966
+  train loss_multi: 0.50026
+  train f1_bi: 0.89775
+  train f1_multi: 0.77731
+('  best test f1:', 0.7498871331828442, 0.5139954853273138)
+epoch 31 (learning rate 0.05455)
+  train loss_bi: 0.31987
+  train loss_multi: 0.50245
+  train f1_bi: 0.89756
+  train f1_multi: 0.77639
+  test loss_bi: 0.00000
+  test loss_multi: 1.79070
+  test f1_bi: 0.75327
+  test f1_multi: 0.51151
+('  best test f1:', 0.7498871331828442, 0.5139954853273138)
+epoch 32, global step 70000 (0.3861s/step):
+  train loss_bi: 0.32690
+  train loss_multi: 0.49510
+  train f1_bi: 0.89641
+  train f1_multi: 0.77749
+('  best test f1:', 0.7498871331828442, 0.5139954853273138)
+epoch 32, global step 70500 (0.3890s/step):
+  train loss_bi: 0.30790
+  train loss_multi: 0.48318
+  train f1_bi: 0.90221
+  train f1_multi: 0.78555
+('  best test f1:', 0.7498871331828442, 0.5139954853273138)
+epoch 32, global step 71000 (0.3898s/step):
+  train loss_bi: 0.30888
+  train loss_multi: 0.47728
+  train f1_bi: 0.90139
+  train f1_multi: 0.78616
+('  best test f1:', 0.7498871331828442, 0.5139954853273138)
+epoch 32, global step 71500 (0.3903s/step):
+  train loss_bi: 0.30715
+  train loss_multi: 0.48766
+  train f1_bi: 0.90229
+  train f1_multi: 0.78426
+('  best test f1:', 0.7498871331828442, 0.5139954853273138)
+epoch 32, global step 72000 (0.3906s/step):
+  train loss_bi: 0.30629
+  train loss_multi: 0.48571
+  train f1_bi: 0.90261
+  train f1_multi: 0.78554
+('  best test f1:', 0.7498871331828442, 0.5139954853273138)
+epoch 32 (learning rate 0.05346)
+  train loss_bi: 0.30629
+  train loss_multi: 0.48571
+  train f1_bi: 0.90261
+  train f1_multi: 0.78554
+  test loss_bi: 0.00000
+  test loss_multi: 1.86694
+  test f1_bi: 0.74492
+  test f1_multi: 0.51490
+('  best test f1:', 0.7449209932279911, 0.5148984198645599)
+epoch 33, global step 72500 (0.3889s/step):
+  train loss_bi: 0.29532
+  train loss_multi: 0.46414
+  train f1_bi: 0.90531
+  train f1_multi: 0.79184
+('  best test f1:', 0.7449209932279911, 0.5148984198645599)
+epoch 33, global step 73000 (0.3906s/step):
+  train loss_bi: 0.29359
+  train loss_multi: 0.46243
+  train f1_bi: 0.90622
+  train f1_multi: 0.79186
+('  best test f1:', 0.7449209932279911, 0.5148984198645599)
+epoch 33, global step 73500 (0.3910s/step):
+  train loss_bi: 0.29543
+  train loss_multi: 0.46882
+  train f1_bi: 0.90565
+  train f1_multi: 0.79139
+('  best test f1:', 0.7449209932279911, 0.5148984198645599)
+epoch 33, global step 74000 (0.3912s/step):
+  train loss_bi: 0.29776
+  train loss_multi: 0.47472
+  train f1_bi: 0.90545
+  train f1_multi: 0.79059
+('  best test f1:', 0.7449209932279911, 0.5148984198645599)
+epoch 33 (learning rate 0.05239)
+  train loss_bi: 0.29827
+  train loss_multi: 0.47485
+  train f1_bi: 0.90539
+  train f1_multi: 0.79068
+  test loss_bi: 0.00000
+  test loss_multi: 1.92032
+  test f1_bi: 0.76591
+  test f1_multi: 0.53386
+('  best test f1:', 0.7659142212189616, 0.5338600451467269)
+epoch 34, global step 74500 (0.3865s/step):
+  train loss_bi: 0.27747
+  train loss_multi: 0.44013
+  train f1_bi: 0.91080
+  train f1_multi: 0.80083
+('  best test f1:', 0.7659142212189616, 0.5338600451467269)
+epoch 34, global step 75000 (0.3889s/step):
+  train loss_bi: 0.28288
+  train loss_multi: 0.44693
+  train f1_bi: 0.90849
+  train f1_multi: 0.79814
+('  best test f1:', 0.7659142212189616, 0.5338600451467269)
+epoch 34, global step 75500 (0.3901s/step):
+  train loss_bi: 0.28781
+  train loss_multi: 0.46055
+  train f1_bi: 0.90732
+  train f1_multi: 0.79600
+('  best test f1:', 0.7659142212189616, 0.5338600451467269)
+epoch 34, global step 76000 (0.3906s/step):
+  train loss_bi: 0.28762
+  train loss_multi: 0.45955
+  train f1_bi: 0.90777
+  train f1_multi: 0.79595
+('  best test f1:', 0.7659142212189616, 0.5338600451467269)
+epoch 34, global step 76500 (0.3915s/step):
+  train loss_bi: 0.28494
+  train loss_multi: 0.46087
+  train f1_bi: 0.90926
+  train f1_multi: 0.79683
+('  best test f1:', 0.7659142212189616, 0.5338600451467269)
+epoch 34 (learning rate 0.05134)
+  train loss_bi: 0.28494
+  train loss_multi: 0.46087
+  train f1_bi: 0.90926
+  train f1_multi: 0.79683
+  test loss_bi: 0.00000
+  test loss_multi: 1.92715
+  test f1_bi: 0.75734
+  test f1_multi: 0.51941
+('  best test f1:', 0.7659142212189616, 0.5338600451467269)
+epoch 35, global step 77000 (0.3932s/step):
+  train loss_bi: 0.27073
+  train loss_multi: 0.42986
+  train f1_bi: 0.91629
+  train f1_multi: 0.81082
+('  best test f1:', 0.7659142212189616, 0.5338600451467269)
+epoch 35, global step 77500 (0.3934s/step):
+  train loss_bi: 0.27307
+  train loss_multi: 0.43585
+  train f1_bi: 0.91403
+  train f1_multi: 0.80649
+('  best test f1:', 0.7659142212189616, 0.5338600451467269)
+epoch 35, global step 78000 (0.3940s/step):
+  train loss_bi: 0.27264
+  train loss_multi: 0.43973
+  train f1_bi: 0.91404
+  train f1_multi: 0.80567
+('  best test f1:', 0.7659142212189616, 0.5338600451467269)
+epoch 35, global step 78500 (0.3949s/step):
+  train loss_bi: 0.27426
+  train loss_multi: 0.44812
+  train f1_bi: 0.91349
+  train f1_multi: 0.80398
+('  best test f1:', 0.7659142212189616, 0.5338600451467269)
+epoch 35 (learning rate 0.05031)
+  train loss_bi: 0.27527
+  train loss_multi: 0.44866
+  train f1_bi: 0.91286
+  train f1_multi: 0.80301
+  test loss_bi: 0.00000
+  test loss_multi: 1.96727
+  test f1_bi: 0.75169
+  test f1_multi: 0.51016
+('  best test f1:', 0.7659142212189616, 0.5338600451467269)
+epoch 36, global step 79000 (0.3985s/step):
+  train loss_bi: 0.28781
+  train loss_multi: 0.45276
+  train f1_bi: 0.90759
+  train f1_multi: 0.79373
+('  best test f1:', 0.7659142212189616, 0.5338600451467269)
+epoch 36, global step 79500 (0.3970s/step):
+  train loss_bi: 0.26713
+  train loss_multi: 0.43539
+  train f1_bi: 0.91503
+  train f1_multi: 0.80626
+('  best test f1:', 0.7659142212189616, 0.5338600451467269)
+epoch 36, global step 80000 (0.3965s/step):
+  train loss_bi: 0.26996
+  train loss_multi: 0.44053
+  train f1_bi: 0.91421
+  train f1_multi: 0.80583
+('  best test f1:', 0.7659142212189616, 0.5338600451467269)
+epoch 36, global step 80500 (0.3971s/step):
+  train loss_bi: 0.26833
+  train loss_multi: 0.44068
+  train f1_bi: 0.91554
+  train f1_multi: 0.80737
+('  best test f1:', 0.7659142212189616, 0.5338600451467269)
+epoch 36, global step 81000 (0.3966s/step):
+  train loss_bi: 0.26908
+  train loss_multi: 0.44404
+  train f1_bi: 0.91579
+  train f1_multi: 0.80673
+('  best test f1:', 0.7659142212189616, 0.5338600451467269)
+epoch 36 (learning rate 0.04931)
+  train loss_bi: 0.26908
+  train loss_multi: 0.44404
+  train f1_bi: 0.91579
+  train f1_multi: 0.80673
+  test loss_bi: 0.00000
+  test loss_multi: 1.93514
+  test f1_bi: 0.75508
+  test f1_multi: 0.51467
+('  best test f1:', 0.7659142212189616, 0.5338600451467269)
+epoch 37, global step 81500 (0.3966s/step):
+  train loss_bi: 0.25113
+  train loss_multi: 0.42973
+  train f1_bi: 0.91974
+  train f1_multi: 0.80941
+('  best test f1:', 0.7659142212189616, 0.5338600451467269)
+epoch 37, global step 82000 (0.4009s/step):
+  train loss_bi: 0.26284
+  train loss_multi: 0.42929
+  train f1_bi: 0.91705
+  train f1_multi: 0.80863
+('  best test f1:', 0.7659142212189616, 0.5338600451467269)
+epoch 37, global step 82500 (0.4014s/step):
+  train loss_bi: 0.26387
+  train loss_multi: 0.43122
+  train f1_bi: 0.91635
+  train f1_multi: 0.80783
+('  best test f1:', 0.7659142212189616, 0.5338600451467269)
+epoch 37, global step 83000 (0.4043s/step):
+  train loss_bi: 0.26281
+  train loss_multi: 0.43473
+  train f1_bi: 0.91761
+  train f1_multi: 0.80825
+('  best test f1:', 0.7659142212189616, 0.5338600451467269)
+epoch 37 (learning rate 0.04832)
+  train loss_bi: 0.26100
+  train loss_multi: 0.43345
+  train f1_bi: 0.91831
+  train f1_multi: 0.80896
+  test loss_bi: 0.00000
+  test loss_multi: 2.00218
+  test f1_bi: 0.74447
+  test f1_multi: 0.50609
+('  best test f1:', 0.7659142212189616, 0.5338600451467269)
+epoch 38, global step 83500 (0.4125s/step):
+  train loss_bi: 0.23608
+  train loss_multi: 0.38346
+  train f1_bi: 0.92339
+  train f1_multi: 0.82836
+('  best test f1:', 0.7659142212189616, 0.5338600451467269)
+epoch 38, global step 84000 (0.4086s/step):
+  train loss_bi: 0.24270
+  train loss_multi: 0.40789
+  train f1_bi: 0.92334
+  train f1_multi: 0.82348
+('  best test f1:', 0.7659142212189616, 0.5338600451467269)
+epoch 38, global step 84500 (0.4065s/step):
+  train loss_bi: 0.24521
+  train loss_multi: 0.42036
+  train f1_bi: 0.92307
+  train f1_multi: 0.81889
+('  best test f1:', 0.7659142212189616, 0.5338600451467269)
+epoch 38, global step 85000 (0.4078s/step):
+  train loss_bi: 0.24615
+  train loss_multi: 0.41822
+  train f1_bi: 0.92248
+  train f1_multi: 0.81862
+('  best test f1:', 0.7659142212189616, 0.5338600451467269)
+epoch 38, global step 85500 (0.4072s/step):
+  train loss_bi: 0.24955
+  train loss_multi: 0.42033
+  train f1_bi: 0.92178
+  train f1_multi: 0.81779
+('  best test f1:', 0.7659142212189616, 0.5338600451467269)
+epoch 38 (learning rate 0.04735)
+  train loss_bi: 0.24955
+  train loss_multi: 0.42033
+  train f1_bi: 0.92178
+  train f1_multi: 0.81779
+  test loss_bi: 0.00000
+  test loss_multi: 1.95690
+  test f1_bi: 0.73860
+  test f1_multi: 0.49842
+('  best test f1:', 0.7659142212189616, 0.5338600451467269)
+epoch 39, global step 86000 (0.4080s/step):
+  train loss_bi: 0.24017
+  train loss_multi: 0.38896
+  train f1_bi: 0.92312
+  train f1_multi: 0.82464
+('  best test f1:', 0.7659142212189616, 0.5338600451467269)
+epoch 39, global step 86500 (0.4083s/step):
+  train loss_bi: 0.24895
+  train loss_multi: 0.40368
+  train f1_bi: 0.92172
+  train f1_multi: 0.82050
+('  best test f1:', 0.7659142212189616, 0.5338600451467269)
+epoch 39, global step 87000 (0.4082s/step):
+  train loss_bi: 0.24693
+  train loss_multi: 0.40041
+  train f1_bi: 0.92241
+  train f1_multi: 0.82200
+('  best test f1:', 0.7659142212189616, 0.5338600451467269)
+epoch 39, global step 87500 (0.4069s/step):
+  train loss_bi: 0.24419
+  train loss_multi: 0.40529
+  train f1_bi: 0.92308
+  train f1_multi: 0.82181
+('  best test f1:', 0.7659142212189616, 0.5338600451467269)
+epoch 39 (learning rate 0.04641)
+  train loss_bi: 0.24406
+  train loss_multi: 0.40970
+  train f1_bi: 0.92344
+  train f1_multi: 0.82139
+  test loss_bi: 0.00000
+  test loss_multi: 1.97093
+  test f1_bi: 0.74876
+  test f1_multi: 0.50722
+('  best test f1:', 0.7659142212189616, 0.5338600451467269)
+epoch 40, global step 88000 (0.4109s/step):
+  train loss_bi: 0.22039
+  train loss_multi: 0.39990
+  train f1_bi: 0.93136
+  train f1_multi: 0.83175
+('  best test f1:', 0.7659142212189616, 0.5338600451467269)
+epoch 40, global step 88500 (0.4101s/step):
+  train loss_bi: 0.23521
+  train loss_multi: 0.39944
+  train f1_bi: 0.92493
+  train f1_multi: 0.82595
+('  best test f1:', 0.7659142212189616, 0.5338600451467269)
+epoch 40, global step 89000 (0.4089s/step):
+  train loss_bi: 0.23127
+  train loss_multi: 0.39461
+  train f1_bi: 0.92674
+  train f1_multi: 0.82917
+('  best test f1:', 0.7659142212189616, 0.5338600451467269)
+epoch 40, global step 89500 (0.4077s/step):
+  train loss_bi: 0.23314
+  train loss_multi: 0.39945
+  train f1_bi: 0.92678
+  train f1_multi: 0.82757
+('  best test f1:', 0.7659142212189616, 0.5338600451467269)
+epoch 40, global step 90000 (0.4077s/step):
+  train loss_bi: 0.23574
+  train loss_multi: 0.40162
+  train f1_bi: 0.92585
+  train f1_multi: 0.82598
+('  best test f1:', 0.7659142212189616, 0.5338600451467269)
+epoch 40 (learning rate 0.04548)
+  train loss_bi: 0.23574
+  train loss_multi: 0.40162
+  train f1_bi: 0.92585
+  train f1_multi: 0.82598
+  test loss_bi: 0.00000
+  test loss_multi: 2.04236
+  test f1_bi: 0.75327
+  test f1_multi: 0.51309
+('  best test f1:', 0.7659142212189616, 0.5338600451467269)
+epoch 41, global step 90500 (0.4031s/step):
+  train loss_bi: 0.22100
+  train loss_multi: 0.38004
+  train f1_bi: 0.93109
+  train f1_multi: 0.83253
+('  best test f1:', 0.7659142212189616, 0.5338600451467269)
+epoch 41, global step 91000 (0.4069s/step):
+  train loss_bi: 0.22272
+  train loss_multi: 0.38205
+  train f1_bi: 0.92973
+  train f1_multi: 0.83070
+('  best test f1:', 0.7659142212189616, 0.5338600451467269)
+epoch 41, global step 91500 (0.4071s/step):
+  train loss_bi: 0.22389
+  train loss_multi: 0.38750
+  train f1_bi: 0.92900
+  train f1_multi: 0.83065
+('  best test f1:', 0.7659142212189616, 0.5338600451467269)
+epoch 41, global step 92000 (0.4077s/step):
+  train loss_bi: 0.22491
+  train loss_multi: 0.38775
+  train f1_bi: 0.92923
+  train f1_multi: 0.83066
+('  best test f1:', 0.7659142212189616, 0.5338600451467269)
+epoch 41 (learning rate 0.04457)
+  train loss_bi: 0.22607
+  train loss_multi: 0.39088
+  train f1_bi: 0.92897
+  train f1_multi: 0.82998
+  test loss_bi: 0.00000
+  test loss_multi: 2.06380
+  test f1_bi: 0.74379
+  test f1_multi: 0.50519
+('  best test f1:', 0.7659142212189616, 0.5338600451467269)
+epoch 42, global step 92500 (0.4017s/step):
+  train loss_bi: 0.21590
+  train loss_multi: 0.38604
+  train f1_bi: 0.93071
+  train f1_multi: 0.83805
+('  best test f1:', 0.7659142212189616, 0.5338600451467269)
+epoch 42, global step 93000 (0.4056s/step):
+  train loss_bi: 0.20337
+  train loss_multi: 0.37566
+  train f1_bi: 0.93637
+  train f1_multi: 0.84180
+('  best test f1:', 0.7659142212189616, 0.5338600451467269)
+epoch 42, global step 93500 (0.4071s/step):
+  train loss_bi: 0.21137
+  train loss_multi: 0.38402
+  train f1_bi: 0.93375
+  train f1_multi: 0.83714
+('  best test f1:', 0.7659142212189616, 0.5338600451467269)
+epoch 42, global step 94000 (0.4061s/step):
+  train loss_bi: 0.21427
+  train loss_multi: 0.38282
+  train f1_bi: 0.93293
+  train f1_multi: 0.83628
+('  best test f1:', 0.7659142212189616, 0.5338600451467269)
+epoch 42, global step 94500 (0.4063s/step):
+  train loss_bi: 0.21615
+  train loss_multi: 0.38764
+  train f1_bi: 0.93222
+  train f1_multi: 0.83496
+('  best test f1:', 0.7659142212189616, 0.5338600451467269)
+epoch 42 (learning rate 0.04368)
+  train loss_bi: 0.21615
+  train loss_multi: 0.38764
+  train f1_bi: 0.93222
+  train f1_multi: 0.83496
+  test loss_bi: 0.00000
+  test loss_multi: 2.03832
+  test f1_bi: 0.74921
+  test f1_multi: 0.50293
+('  best test f1:', 0.7659142212189616, 0.5338600451467269)
+epoch 43, global step 95000 (0.4050s/step):
+  train loss_bi: 0.21311
+  train loss_multi: 0.36183
+  train f1_bi: 0.93394
+  train f1_multi: 0.84158
+('  best test f1:', 0.7659142212189616, 0.5338600451467269)
+epoch 43, global step 95500 (0.4079s/step):
+  train loss_bi: 0.21460
+  train loss_multi: 0.35691
+  train f1_bi: 0.93290
+  train f1_multi: 0.84094
+('  best test f1:', 0.7659142212189616, 0.5338600451467269)
+epoch 43, global step 96000 (0.4077s/step):
+  train loss_bi: 0.21153
+  train loss_multi: 0.37022
+  train f1_bi: 0.93376
+  train f1_multi: 0.83857
+('  best test f1:', 0.7659142212189616, 0.5338600451467269)
+epoch 43, global step 96500 (0.4061s/step):
+  train loss_bi: 0.21425
+  train loss_multi: 0.37532
+  train f1_bi: 0.93246
+  train f1_multi: 0.83635
+('  best test f1:', 0.7659142212189616, 0.5338600451467269)
+epoch 43 (learning rate 0.04281)
+  train loss_bi: 0.21510
+  train loss_multi: 0.37691
+  train f1_bi: 0.93245
+  train f1_multi: 0.83630
+  test loss_bi: 0.00000
+  test loss_multi: 2.06343
+  test f1_bi: 0.75056
+  test f1_multi: 0.51580
+('  best test f1:', 0.7659142212189616, 0.5338600451467269)
+epoch 44, global step 97000 (0.4057s/step):
+  train loss_bi: 0.19775
+  train loss_multi: 0.35055
+  train f1_bi: 0.93807
+  train f1_multi: 0.84893
+('  best test f1:', 0.7659142212189616, 0.5338600451467269)
+epoch 44, global step 97500 (0.4071s/step):
+  train loss_bi: 0.19985
+  train loss_multi: 0.36248
+  train f1_bi: 0.93623
+  train f1_multi: 0.84405
+('  best test f1:', 0.7659142212189616, 0.5338600451467269)
+epoch 44, global step 98000 (0.4065s/step):
+  train loss_bi: 0.20454
+  train loss_multi: 0.36394
+  train f1_bi: 0.93467
+  train f1_multi: 0.84185
+('  best test f1:', 0.7659142212189616, 0.5338600451467269)
+epoch 44, global step 98500 (0.4066s/step):
+  train loss_bi: 0.20718
+  train loss_multi: 0.36167
+  train f1_bi: 0.93423
+  train f1_multi: 0.84178
+('  best test f1:', 0.7659142212189616, 0.5338600451467269)
+epoch 44, global step 99000 (0.4065s/step):
+  train loss_bi: 0.20933
+  train loss_multi: 0.36573
+  train f1_bi: 0.93418
+  train f1_multi: 0.84144
+('  best test f1:', 0.7659142212189616, 0.5338600451467269)
+epoch 44 (learning rate 0.04195)
+  train loss_bi: 0.20933
+  train loss_multi: 0.36573
+  train f1_bi: 0.93418
+  train f1_multi: 0.84144
+  test loss_bi: 0.00000
+  test loss_multi: 2.04849
+  test f1_bi: 0.74944
+  test f1_multi: 0.51038
+('  best test f1:', 0.7659142212189616, 0.5338600451467269)
+epoch 45, global step 99500 (0.4036s/step):
+  train loss_bi: 0.19481
+  train loss_multi: 0.35396
+  train f1_bi: 0.93927
+  train f1_multi: 0.84754
+('  best test f1:', 0.7659142212189616, 0.5338600451467269)
+epoch 45, global step 100000 (0.4046s/step):
+  train loss_bi: 0.18737
+  train loss_multi: 0.35664
+  train f1_bi: 0.94179
+  train f1_multi: 0.84706
+('  best test f1:', 0.7659142212189616, 0.5338600451467269)
+epoch 45, global step 100500 (0.4057s/step):
+  train loss_bi: 0.19623
+  train loss_multi: 0.36026
+  train f1_bi: 0.93842
+  train f1_multi: 0.84400
+('  best test f1:', 0.7659142212189616, 0.5338600451467269)
+epoch 45, global step 101000 (0.4067s/step):
+  train loss_bi: 0.19945
+  train loss_multi: 0.36127
+  train f1_bi: 0.93677
+  train f1_multi: 0.84280
+('  best test f1:', 0.7659142212189616, 0.5338600451467269)
+epoch 45 (learning rate 0.04111)
+  train loss_bi: 0.20331
+  train loss_multi: 0.36355
+  train f1_bi: 0.93569
+  train f1_multi: 0.84138
+  test loss_bi: 0.00000
+  test loss_multi: 2.07481
+  test f1_bi: 0.74763
+  test f1_multi: 0.51558
+('  best test f1:', 0.7659142212189616, 0.5338600451467269)
+epoch 46, global step 101500 (0.4082s/step):
+  train loss_bi: 0.18060
+  train loss_multi: 0.35016
+  train f1_bi: 0.93998
+  train f1_multi: 0.84822
+('  best test f1:', 0.7659142212189616, 0.5338600451467269)
+epoch 46, global step 102000 (0.4065s/step):
+  train loss_bi: 0.19266
+  train loss_multi: 0.37115
+  train f1_bi: 0.93911
+  train f1_multi: 0.84211
+('  best test f1:', 0.7659142212189616, 0.5338600451467269)
+epoch 46, global step 102500 (0.4043s/step):
+  train loss_bi: 0.19231
+  train loss_multi: 0.36048
+  train f1_bi: 0.93921
+  train f1_multi: 0.84481
+('  best test f1:', 0.7659142212189616, 0.5338600451467269)
+epoch 46, global step 103000 (0.4043s/step):
+  train loss_bi: 0.19085
+  train loss_multi: 0.35548
+  train f1_bi: 0.93954
+  train f1_multi: 0.84592
+('  best test f1:', 0.7659142212189616, 0.5338600451467269)
+epoch 46, global step 103500 (0.4060s/step):
+  train loss_bi: 0.19243
+  train loss_multi: 0.35408
+  train f1_bi: 0.93940
+  train f1_multi: 0.84676
+('  best test f1:', 0.7659142212189616, 0.5338600451467269)
+epoch 46 (learning rate 0.04029)
+  train loss_bi: 0.19243
+  train loss_multi: 0.35408
+  train f1_bi: 0.93940
+  train f1_multi: 0.84676
+  test loss_bi: 0.00000
+  test loss_multi: 2.09237
+  test f1_bi: 0.74876
+  test f1_multi: 0.50293
+('  best test f1:', 0.7659142212189616, 0.5338600451467269)
+epoch 47, global step 104000 (0.4043s/step):
+  train loss_bi: 0.18571
+  train loss_multi: 0.33650
+  train f1_bi: 0.93885
+  train f1_multi: 0.85188
+('  best test f1:', 0.7659142212189616, 0.5338600451467269)
+epoch 47, global step 104500 (0.4052s/step):
+  train loss_bi: 0.19212
+  train loss_multi: 0.33710
+  train f1_bi: 0.93895
+  train f1_multi: 0.85259
+('  best test f1:', 0.7659142212189616, 0.5338600451467269)
+epoch 47, global step 105000 (0.4067s/step):
+  train loss_bi: 0.18919
+  train loss_multi: 0.34298
+  train f1_bi: 0.94095
+  train f1_multi: 0.85219
+('  best test f1:', 0.7659142212189616, 0.5338600451467269)
+epoch 47, global step 105500 (0.4068s/step):
+  train loss_bi: 0.19037
+  train loss_multi: 0.34637
+  train f1_bi: 0.94049
+  train f1_multi: 0.85090
+('  best test f1:', 0.7659142212189616, 0.5338600451467269)
+epoch 47 (learning rate 0.03948)
+  train loss_bi: 0.19052
+  train loss_multi: 0.34643
+  train f1_bi: 0.94074
+  train f1_multi: 0.85164
+  test loss_bi: 0.00000
+  test loss_multi: 2.15091
+  test f1_bi: 0.74041
+  test f1_multi: 0.50926
+('  best test f1:', 0.7659142212189616, 0.5338600451467269)
+epoch 48, global step 106000 (0.4107s/step):
+  train loss_bi: 0.16579
+  train loss_multi: 0.32882
+  train f1_bi: 0.94948
+  train f1_multi: 0.86313
+('  best test f1:', 0.7659142212189616, 0.5338600451467269)
+epoch 48, global step 106500 (0.4048s/step):
+  train loss_bi: 0.17365
+  train loss_multi: 0.33109
+  train f1_bi: 0.94623
+  train f1_multi: 0.85827
+('  best test f1:', 0.7659142212189616, 0.5338600451467269)
+epoch 48, global step 107000 (0.4069s/step):
+  train loss_bi: 0.17786
+  train loss_multi: 0.33450
+  train f1_bi: 0.94448
+  train f1_multi: 0.85668
+('  best test f1:', 0.7659142212189616, 0.5338600451467269)
+epoch 48, global step 107500 (0.4077s/step):
+  train loss_bi: 0.17887
+  train loss_multi: 0.33787
+  train f1_bi: 0.94402
+  train f1_multi: 0.85605
+('  best test f1:', 0.7659142212189616, 0.5338600451467269)
+epoch 48, global step 108000 (0.4074s/step):
+  train loss_bi: 0.18306
+  train loss_multi: 0.34006
+  train f1_bi: 0.94311
+  train f1_multi: 0.85465
+('  best test f1:', 0.7659142212189616, 0.5338600451467269)
+epoch 48 (learning rate 0.03869)
+  train loss_bi: 0.18306
+  train loss_multi: 0.34006
+  train f1_bi: 0.94311
+  train f1_multi: 0.85465
+  test loss_bi: 0.00000
+  test loss_multi: 2.20493
+  test f1_bi: 0.74763
+  test f1_multi: 0.50813
+('  best test f1:', 0.7659142212189616, 0.5338600451467269)
+epoch 49, global step 108500 (0.4064s/step):
+  train loss_bi: 0.17485
+  train loss_multi: 0.32063
+  train f1_bi: 0.94693
+  train f1_multi: 0.86217
+('  best test f1:', 0.7659142212189616, 0.5338600451467269)
+epoch 49, global step 109000 (0.4087s/step):
+  train loss_bi: 0.18371
+  train loss_multi: 0.33010
+  train f1_bi: 0.94266
+  train f1_multi: 0.85764
+('  best test f1:', 0.7659142212189616, 0.5338600451467269)
+epoch 49, global step 109500 (0.4097s/step):
+  train loss_bi: 0.18296
+  train loss_multi: 0.32989
+  train f1_bi: 0.94300
+  train f1_multi: 0.85827
+('  best test f1:', 0.7659142212189616, 0.5338600451467269)
+epoch 49, global step 110000 (0.4082s/step):
+  train loss_bi: 0.17956
+  train loss_multi: 0.33101
+  train f1_bi: 0.94411
+  train f1_multi: 0.85952
+('  best test f1:', 0.7659142212189616, 0.5338600451467269)
+epoch 49 (learning rate 0.03792)
+  train loss_bi: 0.18179
+  train loss_multi: 0.33440
+  train f1_bi: 0.94310
+  train f1_multi: 0.85751
+  test loss_bi: 0.00000
+  test loss_multi: 2.15725
+  test f1_bi: 0.74695
+  test f1_multi: 0.50722
+('  best test f1:', 0.7659142212189616, 0.5338600451467269)
+epoch 50, global step 110500 (0.4067s/step):
+  train loss_bi: 0.15740
+  train loss_multi: 0.33448
+  train f1_bi: 0.95012
+  train f1_multi: 0.85929
+('  best test f1:', 0.7659142212189616, 0.5338600451467269)
+epoch 50, global step 111000 (0.4068s/step):
+  train loss_bi: 0.16560
+  train loss_multi: 0.32026
+  train f1_bi: 0.94739
+  train f1_multi: 0.86389
+('  best test f1:', 0.7659142212189616, 0.5338600451467269)
+epoch 50, global step 111500 (0.4073s/step):
+  train loss_bi: 0.16977
+  train loss_multi: 0.32429
+  train f1_bi: 0.94579
+  train f1_multi: 0.86086
+('  best test f1:', 0.7659142212189616, 0.5338600451467269)
+epoch 50, global step 112000 (0.4073s/step):
+  train loss_bi: 0.16896
+  train loss_multi: 0.32931
+  train f1_bi: 0.94626
+  train f1_multi: 0.86116
+('  best test f1:', 0.7659142212189616, 0.5338600451467269)
+epoch 50, global step 112500 (0.4077s/step):
+  train loss_bi: 0.17085
+  train loss_multi: 0.33086
+  train f1_bi: 0.94575
+  train f1_multi: 0.86032
+('  best test f1:', 0.7659142212189616, 0.5338600451467269)
+epoch 50 (learning rate 0.03716)
+  train loss_bi: 0.17085
+  train loss_multi: 0.33086
+  train f1_bi: 0.94575
+  train f1_multi: 0.86032
+  test loss_bi: 0.00000
+  test loss_multi: 2.18536
+  test f1_bi: 0.75779
+  test f1_multi: 0.51625
+('  best test f1:', 0.7659142212189616, 0.5338600451467269)

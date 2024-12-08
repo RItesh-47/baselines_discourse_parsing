@@ -1,0 +1,13 @@
+loading dataset..
+loading test data from ./Molweni/DP(500)/test.json
+format dataset..
+loading model state dict..
+/DATA1/ritesh/baselines_discourse_parsing/Structure-Self-Aware_electra/main.py:353: UserWarning: Creating a tensor from a list of numpy.ndarrays is extremely slow. Please consider converting the list to a single numpy.ndarray with numpy.array() before converting to a tensor. (Triggered internally at ../torch/csrc/utils/tensor_new.cpp:274.)
+  model = StudentModel(params=args, pretrained_embedding=torch.tensor(pretrained_embedding).float())
+---test result---
+test loss : 0.5603 1.3895
+
+---eval result---
+link micro-f1 : 0.8097065462753951
+label micro-f1: 0.5656884875846501
+
